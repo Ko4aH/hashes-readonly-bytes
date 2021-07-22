@@ -21,7 +21,8 @@ namespace hashes
 		}
 
 		private int GetArrayHash()
-		{			var primeNumber = 16777619;
+		{			
+			var primeNumber = 16777619;
 			var hash = Int32.MaxValue;
 			foreach (var b in _byteArray)
 				unchecked
