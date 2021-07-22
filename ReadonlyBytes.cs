@@ -17,14 +17,18 @@ namespace hashes
 		public ReadonlyBytes(params byte[] bytes)
 		{
 			_byteArray = bytes ?? throw new ArgumentNullException();
-			var primeNumber = 16777619;
+			_hashcode = GetArrayHash();
+		}
+
+		private int GetArrayHash()
+		{			var primeNumber = 16777619;
 			var hash = Int32.MaxValue;
 			foreach (var b in _byteArray)
 				unchecked
 				{
 					hash = (hash + b) * primeNumber;
 				}
-			_hashcode = hash;
+			return hash;
 		}
 
 		public IEnumerator<byte> GetEnumerator()
